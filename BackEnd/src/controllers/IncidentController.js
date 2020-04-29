@@ -43,7 +43,7 @@ module.exports = {
             .select('ong_id') //first retorna primeiro elemento do array, garantindo que retorne um número
         
         if (incident.ong_id != ong_id) {
-            return response.status(401).json({ error: 'Operation not permitted.'}) //Pesquisar HTTP Status codes
+            return response.status(401).json({ error: 'Operação não permitida.'}) //Pesquisar HTTP Status codes
         }
 
         await connection('incidents').where('id', id).delete();
