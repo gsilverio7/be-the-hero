@@ -41,8 +41,9 @@ module.exports = {
         const incident = await connection('incidents')
             .where('id', id)
             .select('ong_id') //first retorna primeiro elemento do array, garantindo que retorne um número
-        
-        if (incident.ong_id != ong_id) {
+            .first();
+	
+        if (incident.ong_id !== ong_id) {
             return response.status(401).json({ error: 'Operação não permitida.'}) //Pesquisar HTTP Status codes
         }
 
