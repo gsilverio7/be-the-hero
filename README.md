@@ -32,5 +32,3 @@ Rode ```npm start``` nas pastas backend e mobile, acesse **localhost:19002**, le
     <img alt="" title="" src="imgs/print9.png">
     <img alt="" title="" src="imgs/print-insomnia.png">
 </p>
-
-Veja também esse [vídeo](https://youtu.be/UygqW2eBJJA) com a demonstração das versões web e mobile rodando localmente.
