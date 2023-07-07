@@ -4,13 +4,9 @@
     <img alt="" title="" src="imgs/logo.svg">
 </h1>
 
-<h2 align="center"> Aplicação para conectar ONGs e outras instituições a pessoas que tem disponibilidade para ajudar </h2>
-
-<h3 align="center"> Criada com a stack <img src="imgs/react.png" alt="react" height="18"> React, <img src="imgs/react-native.png" alt="react-native" height="18"> React Native, <img src="imgs/node.png" alt="node" height="18"> Node e <img src="imgs/sqlite.png" alt="node" height="18"> SQLite </h3>
+<h2 align="center"> Aplicação que compartilha casos de ONGs com usuários interessados em ajudar. Feito com React, React Native, Nodejs, Express e SQLite. </h2>
 
 <p align="center"> <img src="imgs/heroes.png" alt="heroes" height="250"> </p>
-
----
 
 ## Para rodar a aplicação
 
@@ -38,7 +34,3 @@ Rode ```npm start``` nas pastas backend e mobile, acesse **localhost:19002**, le
 </p>
 
 Veja também esse [vídeo](https://youtu.be/UygqW2eBJJA) com a demonstração das versões web e mobile rodando localmente.
-
----
-
-<h4 align="center"> <em>&lt;/&gt;</em> by <a href="https://github.com/gsilverio7" target="_blank">gsilverio7</a> </h4>
