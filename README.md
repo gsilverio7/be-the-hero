@@ -10,6 +10,8 @@
 
 ## Para rodar a aplicação
 
+utilizar node.js ^12.16.1
+
 > OBS: pode-se utilizar o gerenciador de pacotes npm ou o yarn para rodar os comandos abaixo
 
 Execute ```npm install``` nas pastas backend, frontend e mobile, para instalar as dependências.
