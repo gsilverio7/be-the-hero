@@ -8,6 +8,10 @@
 
 <p align="center"> <img src="imgs/heroes.png" alt="heroes" height="250"> </p>
 
+## Requisitos
+
+node.js: ^12.16.1
+
 ## Para rodar a aplicação
 
 > OBS: pode-se utilizar o gerenciador de pacotes npm ou o yarn para rodar os comandos abaixo
