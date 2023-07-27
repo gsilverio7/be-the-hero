@@ -6,7 +6,7 @@ import logoImg from '../../assets/logo.svg';
 
 import { FiArrowLeft } from 'react-icons/fi';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import api from "../../services/api";
 
@@ -21,7 +21,7 @@ export default function Register() {
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
 
-    const history = useHistory();
+    const history = useNavigate();
 
     async function handleRegister(e){
         e.preventDefault();
@@ -32,7 +32,7 @@ export default function Register() {
         const response =  await api.post('ongs', data);
 
         alert(`Cadastro realizado com sucesso! Seu ID de acesso é: ${response.data.id}`);
-        history.push('/');
+        history('/');
 
         } catch (err) { 
             alert("Erro no cadastro. Por favor, tente novamente")

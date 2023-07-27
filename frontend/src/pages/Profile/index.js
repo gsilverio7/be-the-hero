@@ -4,7 +4,7 @@ import './styles.css';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 
@@ -17,7 +17,7 @@ export default function Profile() {
   const ongId = localStorage.getItem('ongId');
   const ongName = localStorage.getItem('ongName');
 
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect( () => {
 
@@ -48,7 +48,7 @@ export default function Profile() {
 
   function handleLogout() {
     localStorage.clear();
-    history.push('/');
+    history('/');
   }
   return (
 
@@ -56,7 +56,7 @@ export default function Profile() {
        <header>
             <img src={logoImg} alt="Be The Hero"/>
             <span>Bem vinda, {ongName}</span>
-            <Link to="incidents/new" className="button">Cadastrar novo caso</Link>
+            <Link to="/incidents/new" className="button">Cadastrar novo caso</Link>
             <button onClick={handleLogout} type="button" >
                 <FiPower size={18} color="#e02041" />
             </button>

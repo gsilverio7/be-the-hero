@@ -1,13 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const routes = require("./routes");
-
+require('dotenv').config();
 
 const app = express();
 
 app.use(cors(
     {
-        //origin: 'https://becomethehero.vercel.app'
         origin: process.env.FRONTEND_URL || 'http://localhost:3000'
     } 
     // Permite acesso apenas do domínio especificado. 

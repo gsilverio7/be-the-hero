@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import { FiLogIn } from 'react-icons/fi';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './styles.css';
 
@@ -15,7 +15,7 @@ export default function Logon() {
 
   const [id, setId] = useState("9acfed49");
 
-  const history = useHistory();
+  const history = useNavigate();
 
   async function handleLogin(e){
     e.preventDefault();
@@ -25,7 +25,7 @@ export default function Logon() {
       
       localStorage.setItem('ongId', id);
       localStorage.setItem('ongName', response.data.name);
-      history.push('profile')
+      history('profile')
 
 
     } catch (err) {

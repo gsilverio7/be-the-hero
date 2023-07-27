@@ -6,7 +6,7 @@ import logoImg from '../../assets/logo.svg';
 
 import { FiArrowLeft } from 'react-icons/fi';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import api from "../../services/api";
 
@@ -14,7 +14,7 @@ import Cleave from 'cleave.js/react';
 
 export default function NewIncident() {
 
-  const history = useHistory();
+  const history = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
@@ -32,7 +32,7 @@ export default function NewIncident() {
         });
 
         alert(`Caso cadastrado com sucesso!`);
-        history.push('/profile');
+        history('/profile');
 
         } catch (err) { 
             alert("Erro no cadastro. Por favor, tente novamente")
