@@ -6,9 +6,13 @@ const routes = require("./routes");
 const app = express();
 
 app.use(cors(
-    {origin: 'https://becomethehero.vercel.app'} // Permite acesso apenas do domínio especificado. 
-                                            // Na fase de desenvolvimento, fica vazio, permitindo acesso de
-                                            // qualquer aplicação front-end.
+    {
+        //origin: 'https://becomethehero.vercel.app'
+        origin: process.env.FRONTEND_URL || 'http://localhost:3000'
+    } 
+    // Permite acesso apenas do domínio especificado. 
+    // Na fase de desenvolvimento, pode ficar vazio, permitindo acesso de
+    // qualquer aplicação front-end. 
 ));
 
 app.use(express.json());
