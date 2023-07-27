@@ -6,9 +6,6 @@
   "engines": {
     "node": "18.x"
   },
-  "scripts": {
-    "start": "nodemon api/index.js"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
