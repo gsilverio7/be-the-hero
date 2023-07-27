@@ -10,7 +10,7 @@
 
 ## Requisitos
 
-node.js: ^12.16.1
+- Node.js ~18.16.1
 
 ## Para rodar a aplicação
 
