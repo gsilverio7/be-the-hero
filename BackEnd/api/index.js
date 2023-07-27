@@ -6,7 +6,7 @@ const routes = require("./routes");
 const app = express();
 
 app.use(cors(
-    //{origin: 'http://dominioexemplo.com'} // Permite acesso apenas do domínio especificado. 
+    {origin: 'https://becomethehero.vercel.app'} // Permite acesso apenas do domínio especificado. 
                                             // Na fase de desenvolvimento, fica vazio, permitindo acesso de
                                             // qualquer aplicação front-end.
 ));
