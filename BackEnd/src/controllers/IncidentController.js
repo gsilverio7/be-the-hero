@@ -7,7 +7,6 @@ module.exports = {
         const { page = 1 } = request.query;
 
         const [count] = await connection('incidents').count(); //colchetes para retornar número, não um array
-        console.log(count);
  
         const incidents = await connection('incidents')
         .join('ongs', 'ongs.id', "=", "incidents.ong_id")
