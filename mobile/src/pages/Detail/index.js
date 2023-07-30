@@ -1,13 +1,10 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, Linking, FlatList} from 'react-native';
+import { View, Text, Image, TouchableOpacity, Linking, ScrollView} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import logoImg from '../../assets/logo.png';
 import styles from './styles';
-
 import * as MailComposer from 'expo-mail-composer';
-import { ScrollView } from 'react-native-gesture-handler';
-
 
 export default function Detail(){
 
@@ -43,51 +40,49 @@ export default function Detail(){
                 </TouchableOpacity>
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false} >
+            <ScrollView >
 
-            <View style={styles.incident}>       
+                <View style={styles.incident}>       
 
-                {/* é possivel criar um array de estilos, até com o fim de sobrescrever alguma prpriedade da folha de estilos */}
-                <Text style={[ styles.incidentProperty, { marginTop:0 } ]}>ONG:</Text>
-                <Text style={styles.incidentValue}>{incident.name} de {incident.city}/{incident.uf}</Text>
+                    {/* é possivel criar um array de estilos, até com o fim de sobrescrever alguma propriedade da folha de estilos */}
+                    <Text style={[ styles.incidentProperty, { marginTop:0 } ]}>ONG:</Text>
+                    <Text style={styles.incidentValue}>{incident.name} de {incident.city}/{incident.uf}</Text>
 
-                <Text style={styles.incidentProperty}>CASO:</Text>
-                <Text style={styles.incidentValue}>{incident.title}</Text>
+                    <Text style={styles.incidentProperty}>CASO:</Text>
+                    <Text style={styles.incidentValue}>{incident.title}</Text>
 
-                <Text style={styles.incidentProperty}>DESCRIÇÃO:</Text>
-                <Text style={styles.incidentValue}>{incident.description}</Text>
+                    <Text style={styles.incidentProperty}>DESCRIÇÃO:</Text>
+                    <Text style={styles.incidentValue}>{incident.description}</Text>
 
-                <Text style={styles.incidentProperty}>VALOR:</Text>
-                <Text style={styles.incidentValue}>{
-                  Intl.NumberFormat('pt-BR', {
-                    style: 'currency', 
-                    currency: 'BRL'
-                  }).format(incident.value)}
-                </Text>
-
-         
-
-            </View>
-
-            <View style={styles.contactBox}>
-                <Text style={styles.heroTitle}>Salve o dia!</Text>
-                <Text style={styles.heroTitle}>Seja o herói desse caso.</Text>
-
-                <Text style={styles.heroDescription}>Entre em contato:</Text>
-
-                <View style={styles.actions}>
-
-                    <TouchableOpacity style={styles.action} onPress={ sendWhatsapp }>
-                        <Text style={styles.actionText}> WhatsApp </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.action} onPress={ sendEmail }>
-                        <Text style={styles.actionText}> E-mail </Text>
-                    </TouchableOpacity>
+                    <Text style={styles.incidentProperty}>VALOR:</Text>
+                    <Text style={styles.incidentValue}>{
+                    Intl.NumberFormat('pt-BR', {
+                        style: 'currency', 
+                        currency: 'BRL'
+                    }).format(incident.value)}
+                    </Text>         
 
                 </View>
 
-            </View>
+                <View style={styles.contactBox}>
+                    <Text style={styles.heroTitle}>Salve o dia!</Text>
+                    <Text style={styles.heroTitle}>Seja o herói desse caso.</Text>
+
+                    <Text style={styles.heroDescription}>Entre em contato:</Text>
+
+                    <View style={styles.actions}>
+
+                        <TouchableOpacity style={styles.action} onPress={ sendWhatsapp }>
+                            <Text style={styles.actionText}> WhatsApp </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.action} onPress={ sendEmail }>
+                            <Text style={styles.actionText}> E-mail </Text>
+                        </TouchableOpacity>
+
+                    </View>
+
+                </View>
 
             </ScrollView>
             
