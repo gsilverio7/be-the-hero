@@ -1,19 +1,10 @@
 const express = require("express");
-const cors = require("cors");
 const routes = require("./routes");
 require('dotenv').config();
 
 const app = express();
 
-app.use(cors(
-    {
-        //origin: process.env.FRONTEND_URL || 'http://localhost:3000'
-        exposedHeaders: 'x-total-count'
-    } 
-    // Permite acesso apenas do domínio especificado. 
-    // Na fase de desenvolvimento, pode ficar vazio, permitindo acesso de
-    // qualquer aplicação front-end. 
-));
+
 
 app.use(express.json());
 
