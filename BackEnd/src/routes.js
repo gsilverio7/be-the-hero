@@ -21,12 +21,24 @@ const corsOptionsMobile = {
 
 const routes = express.Router();
 
-routes.post('/sessions', cors(corsOptionsWeb), SessionController.create); //Login de ONGs
+routes.options('/sessions', cors(corsOptionsWeb));
+routes.post('/sessions', cors(corsOptionsWeb), SessionController.create);//Login de ONGs
+
+routes.options('/ongs', cors(corsOptionsWeb));
 routes.post('/ongs', cors(corsOptionsWeb), OngController.create); //Cadastrar novas ONGs
+
+routes.options('/ongs', cors(corsOptionsWeb));
 routes.get('/ongs', cors(corsOptionsWeb), OngController.index); //Listagem de ONGs
+
+routes.options('/incidents', cors(corsOptionsWeb));
 routes.post('/incidents', cors(corsOptionsWeb), IncidentController.create); //Cadastrar novos Incidentes
+
 routes.get('/incidents', cors(corsOptionsMobile), IncidentController.index); //Listagem de Incidentes
+
+routes.options('/incidents/:id', cors(corsOptionsWeb));
 routes.delete('/incidents/:id', cors(corsOptionsWeb), IncidentController.delete);//Apagar Incidentes
+
+routes.options('/profile', cors(corsOptionsWeb));
 routes.get('/profile', cors(corsOptionsWeb), ProfileController.index); //Listagem de Incidentes de uma ONG específica
 
 module.exports = routes;
