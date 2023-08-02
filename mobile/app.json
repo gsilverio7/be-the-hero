@@ -26,6 +26,14 @@
     },
     "web": {
       "bundler": "metro"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "90f3c988-af80-4f93-b5ff-4e3db2447f69"
+      }
+    },
+    "android": {
+      "package": "com.bielsil27.bethehero"
     }
   }
 }
