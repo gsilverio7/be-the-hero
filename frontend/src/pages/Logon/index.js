@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiHome } from 'react-icons/fi';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ export default function Logon() {
       
       localStorage.setItem('ongId', id);
       localStorage.setItem('ongName', response.data.name);
-      history('profile')
+      history('/profile')
 
 
     } catch (err) {
@@ -35,7 +35,12 @@ export default function Logon() {
   }
 
   return (
-
+    <>
+     <a className='goHome' onClick={() => history('/') }>
+      <FiHome size={20} color='#fff'></FiHome>
+      &nbsp;
+      Página Inicial
+     </a>
      <div className="logon-container">
        <section className="form">
 
@@ -67,7 +72,7 @@ export default function Logon() {
 
      </div>
      
-
+     </>
   );
 }
 

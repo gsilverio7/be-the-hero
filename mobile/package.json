@@ -1,11 +1,10 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "npx expo start --dev-client",
+    "android": "npx expo run:android",
+    "ios": "npx expo run:ios",
+    "web": "npx expo start --web",
+    "eject": "npx expo eject"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -16,11 +15,18 @@
     "expo-constants": "^14.4.2",
     "expo-mail-composer": "^12.3.0",
     "intl": "^1.2.5",
-    "react": "^18.2.0",
-    "react-native": "^0.72.3",
-    "react-native-web": "^0.19.7"
+    "react": "18.2.0",
+    "react-native": "0.72.3",
+    "react-native-web": "^0.19.7",
+    "expo-splash-screen": "~0.20.4",
+    "expo-status-bar": "~1.6.0"
   },
   "overrides": {
     "semver": "^7.5.3"
+  },
+  "name": "mobile",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
   }
 }

@@ -36,6 +36,9 @@ routes.post('/incidents', cors(corsOptionsWeb), IncidentController.create); //Ca
 routes.get('/incidents', cors(corsOptionsMobile), IncidentController.index); //Listagem de Incidentes
 
 routes.options('/incidents/:id', cors(corsOptionsWeb));
+routes.get('/incidents/:id', cors(corsOptionsWeb), IncidentController.get);//Apagar Incidentes
+
+routes.options('/incidents/:id', cors(corsOptionsWeb));
 routes.delete('/incidents/:id', cors(corsOptionsWeb), IncidentController.delete);//Apagar Incidentes
 
 routes.options('/profile', cors(corsOptionsWeb));

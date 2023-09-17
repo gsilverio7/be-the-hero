@@ -66,10 +66,6 @@
     transition: opacity 0.2s;
 }
 
-.profile-container ul li button:hover {
-    opacity: 0.8;
-}
-
 .profile-container ul li strong {
     display: block;
     margin-bottom: 16px;

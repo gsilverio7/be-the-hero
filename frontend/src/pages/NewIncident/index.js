@@ -78,12 +78,15 @@ export default function NewIncident() {
                 options={{
                   numeral: true,
                   numeralThousandsGroupStyle: 'thousand',
+                  numeralDecimalMark: ',',
+                  delimiter: '.'
                 }}
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 // className="form-field"
                 required
                 />
+
 
                 <button className="button" type="submit">Cadastrar</button>
             </form>

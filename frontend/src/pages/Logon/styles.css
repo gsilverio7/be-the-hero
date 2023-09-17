@@ -25,3 +25,21 @@
     margin-bottom: 32px;
 }
 
+.goHome {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    cursor: pointer;
+    background-color: #e02041;
+    color: #fff;
+    border-radius: 4px;
+    padding: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.goHome:hover{
+    filter: brightness(90%);
+}
