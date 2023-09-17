@@ -68,7 +68,7 @@ export default function Logon() {
 
        </section>
 
-       <img src={heroesImg} alt="Heroes" ></img>
+       <img className="heroes" src={heroesImg} alt="Heroes" ></img>
 
      </div>
      
