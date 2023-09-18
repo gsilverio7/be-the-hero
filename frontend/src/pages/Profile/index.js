@@ -1,39 +1,46 @@
 import React, {useState, useEffect} from 'react';
-
 import './styles.css';
-
 import logoImg from '../../assets/logo.svg';
-
 import { Link, useNavigate } from 'react-router-dom';
-
-import { FiPower, FiTrash2, FiPlus } from 'react-icons/fi';
-
+import { FiPower, FiTrash2, FiPlus, FiPenTool } from 'react-icons/fi';
 import api from "../../services/api";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 export default function Profile() {
 
+  const MySwal = withReactContent(Swal.mixin({
+    confirmButtonColor: '#e02041'
+  }));
   const [incidents, setIncidents] = useState([]);
-
   const ongId = localStorage.getItem('ongId');
   const ongName = localStorage.getItem('ongName');
-
   const history = useNavigate();
 
   useEffect( () => {
-
     api.get('profile', {
-
       headers: {Authorization: ongId,
       }
     }).then(response => {
-
       setIncidents(response.data);
-
     })
-
   }, [ongId] );
 
   async function handleDeleteIncident(id){
+    MySwal.fire({
+      icon: 'warning',
+      title: 'Deseja mesmo apagar esse caso?',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteIncident(id);
+      } 
+    })
+  }
+
+  async function deleteIncident(id) {
     try{
       await api.delete(`incidents/${id}`, {
         headers: {
@@ -41,8 +48,9 @@ export default function Profile() {
         }
       });
       setIncidents(incidents.filter(incident => incident.id !== id));
+      MySwal.fire('Caso apagado com sucesso!', '', 'success')
     } catch (err){
-      alert('Erro ao deletar caso. Por favor, tente novamente.');
+      MySwal.fire('Erro ao apagar caso. Por favor, tente novamente.', '', 'error');
     }
   }
 

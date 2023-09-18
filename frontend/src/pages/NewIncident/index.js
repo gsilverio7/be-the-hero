@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
-
 import './styles.css';
-
 import logoImg from '../../assets/logo.svg';
-
 import { FiArrowLeft } from 'react-icons/fi';
-
 import { Link, useNavigate } from 'react-router-dom';
-
 import api from "../../services/api";
-
 import Cleave from 'cleave.js/react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 export default function NewIncident() {
 
+  const MySwal = withReactContent(Swal.mixin({
+    confirmButtonColor: '#e02041'
+  }));
   const history = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -31,11 +30,13 @@ export default function NewIncident() {
            }
         });
 
-        alert(`Caso cadastrado com sucesso!`);
-        history('/profile');
+        MySwal.fire('Caso cadastrado com sucesso!', '', 'success')
+          .then(() => {
+            history('/profile');
+          })
 
         } catch (err) { 
-            alert("Erro no cadastro. Por favor, tente novamente")
+            MySwal.fire('Erro no cadastro. Por favor, tente novamente', '', 'error')
         }
   }
 

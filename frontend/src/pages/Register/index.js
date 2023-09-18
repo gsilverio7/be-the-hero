@@ -1,20 +1,19 @@
 import React, {useState} from 'react';
-
 import './styles.css';
-
 import logoImg from '../../assets/logo.svg';
-
 import { FiArrowLeft } from 'react-icons/fi';
-
 import { Link, useNavigate } from 'react-router-dom';
-
 import api from "../../services/api";
-
 import "cleave.js/dist/addons/cleave-phone.br";
 import Cleave from 'cleave.js/react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 export default function Register() {
 
+    const MySwal = withReactContent(Swal.mixin({
+        confirmButtonColor: '#e02041'
+    }));
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
@@ -31,11 +30,13 @@ export default function Register() {
         try {
         const response =  await api.post('ongs', data);
 
-        alert(`Cadastro realizado com sucesso! Seu ID de acesso é: ${response.data.id}`);
-        history('/');
+        MySwal.fire(`Cadastro realizado com sucesso! Seu ID de acesso é: ${response.data.id}`, '', 'success')
+            .then( () => {
+                history('/logon')
+            });
 
         } catch (err) { 
-            alert("Erro no cadastro. Por favor, tente novamente")
+            MySwal.fire('Erro no cadastro. Por favor, tente novamente', '', 'error')
         }
     };
 
@@ -47,9 +48,9 @@ export default function Register() {
                 <img src={logoImg} alt="Be The Hero"/>
                 <h1>Cadastro</h1>
                 <p>Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem casos da sua ONG.</p>
-                <Link className="back-link" to="/">
-                <FiArrowLeft size={16} color="#e02041" />
-                Voltar para o começo
+                <Link className="back-link" to="/logon">
+                    <FiArrowLeft size={16} color="#e02041" />
+                    Voltar
                 </Link>
 
             </section>
@@ -67,12 +68,6 @@ export default function Register() {
                     onChange={e => setEmail(e.target.value)}
                     required
                     />
-
-                {/* <input
-                    placeholder="Whatsapp"
-                    value={whatsapp}
-                    onChange={e => setWhatsapp(e.target.value)}
-                /> */}
 
                 <Cleave
                 placeholder="Whatsapp"
@@ -102,41 +97,6 @@ export default function Register() {
                     required
                     /> 
                     
-                    {/* <select 
-                    name="estados-brasil"
-                    value={uf}
-                    onChange={e => setUf(e.target.value)}
-                    >
-                            <option value="" disabled selected>UF</option>
-                            <option value="AC">AC</option>
-                            <option value="AL">AL</option>
-                            <option value="AP">AP</option>
-                            <option value="AM">AM</option>
-                            <option value="BA">BA</option>
-                            <option value="CE">CE</option>
-                            <option value="DF">DF</option>
-                            <option value="ES">ES</option>
-                            <option value="GO">GO</option>
-                            <option value="MA">MA</option>
-                            <option value="MT">MT</option>
-                            <option value="MS">MS</option>
-                            <option value="MG">MG</option>
-                            <option value="PA">PA</option>
-                            <option value="PB">PB</option>
-                            <option value="PR">PR</option>
-                            <option value="PE">PE</option>
-                            <option value="PI">PI</option>
-                            <option value="RJ">RJ</option>
-                            <option value="RN">RN</option>
-                            <option value="RS">RS</option>
-                            <option value="RO">RO</option>
-                            <option value="RR">RR</option>
-                            <option value="SC">SC</option>
-                            <option value="SP">SP</option>
-                            <option value="SE">SE</option>
-                            <option value="TO">TO</option>
-                    </select> */}
-
                 </div>
                 <button className="button" type="submit">Cadastrar</button>
             </form>

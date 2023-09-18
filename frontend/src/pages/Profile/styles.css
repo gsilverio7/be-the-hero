@@ -52,6 +52,10 @@
     align-items: center;
     text-decoration: none;
 }
+
+.profile-container .addButton:hover {
+    filter: brightness(90%);
+} 
     
 .profile-container header button:hover{
     border-color: #999;

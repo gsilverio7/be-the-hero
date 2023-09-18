@@ -1,20 +1,19 @@
 import React, {useState} from 'react';
-
 import { FiLogIn, FiHome } from 'react-icons/fi';
-
 import { Link, useNavigate } from 'react-router-dom';
-
 import './styles.css';
-
 import logoImg from '../../assets/logo.svg';
 import heroesImg from '../../assets/heroes.png';
-
 import api from "../../services/api";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 export default function Logon() {
 
+  const MySwal = withReactContent(Swal.mixin({
+    confirmButtonColor: '#e02041'
+  }));
   const [id, setId] = useState("9acfed49");
-
   const history = useNavigate();
 
   async function handleLogin(e){
@@ -29,7 +28,7 @@ export default function Logon() {
 
 
     } catch (err) {
-      alert('ID não encontrada ou falha no Login. Por favor, tente novamente.')
+      MySwal('ID não encontrada ou falha no Login. Por favor, tente novamente.', '', 'error');
     }
 
   }
