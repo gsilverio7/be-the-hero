@@ -6,7 +6,7 @@ import logoImg from '../../assets/logo.svg';
 
 import { Link, useNavigate } from 'react-router-dom';
 
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2, FiPlus } from 'react-icons/fi';
 
 import api from "../../services/api";
 
@@ -55,18 +55,24 @@ export default function Profile() {
     <div className="profile-container">
        <header>
             <img className="headerLogo" src={logoImg} alt="Be The Hero"/>
-            <span>Bem vinda, {ongName}</span>
-            <Link to="/incidents/new" className="button">Cadastrar novo caso</Link>
+            <Link to="/incidents/new" className="addButton">
+              <FiPlus size={20} color="#fff" />
+              &nbsp;
+              <span className='addButtonText'>
+                Cadastrar novo caso
+              </span>
+            </Link>
             <button onClick={handleLogout} type="button" >
-                <FiPower size={18} color="#e02041" />
+                <FiPower size={20} color="#e02041" />
             </button>
        </header>
 
+       <span className='welcome'>Bem vinda, {ongName}!</span>
        <h1>Casos cadastrados</h1>
 
-       <ul>
+       <div className='incidentList'>
         {incidents.map(incident => (
-                   <li key={incident.id}>
+                   <div className='incident card' key={incident.id}>
                    <strong>CASO:</strong>
                    <p>{incident.title}</p>
         
@@ -79,9 +85,9 @@ export default function Profile() {
                    <button onClick={() => handleDeleteIncident(incident.id)} type="button"> {/* necessário arrow function ou deletará todos os incidentes */}
                      <FiTrash2 size={20} color="#a8a8b3"/>
                    </button>
-                 </li>
+                 </div>
         ))}
-       </ul>
+       </div>
 
     </div>
 
