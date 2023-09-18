@@ -4,7 +4,7 @@ import api from '../../services/api';
 import formatMoney from '../../utils/formatMoney';
 //import logoImg from '../../assets/logo.svg';
 import { FaEnvelope, FaWhatsapp } from 'react-icons/fa';
-import { FiLogIn, FiArrowDownLeft, FiArrowLeft } from 'react-icons/fi';
+import { FiLogIn, FiHome } from 'react-icons/fi';
 import './styles.css';
 
 export default function Detail() {
@@ -37,9 +37,9 @@ export default function Detail() {
             <div className="header">
                 <div className="goBack btn" onClick={() => history('/') }>
                     {/* <img className="headerLogo" src={logoImg} alt="Be The Hero"/> */}
-                    <FiArrowLeft size={20} color='#fff' />     
+                    <FiHome size={20} color='#fff' />     
                     &nbsp;
-                    Voltar
+                    Página Inicial
                 </div>
 
                 <div className="logonBtn btn" onClick={() => { history('/logon') }}>

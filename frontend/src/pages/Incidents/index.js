@@ -21,11 +21,7 @@ export default function Incidents() {
         if (loading) {//se loading for 'true', ou seja, estiver carregando, não fará nova requisição
           return;
         }
-  
-        // if (total > 0 && incidents.length === total) {
-        //   return;
-        // }
-  
+ 
         setLoading(true);
   
         const response = await api.get('incidents', {
@@ -60,6 +56,12 @@ export default function Incidents() {
           <div className='description'>Escolha um dos casos abaixo e salve o dia.</div>  
 
           <div className='incidentList cards'>
+            <div className={`loading ${loading ? 'show' : 'hide'}`}>
+              <div className='loadingInner'>
+              <div className='lds-ripple'><div></div><div></div></div>
+                Carregando
+              </div>
+            </div>
 
             {
                 incidents.map((incident) => {

@@ -1,8 +1,12 @@
 .profile-container{
     width: 100%;
-    max-width: 1180px;
-    padding: 0 30px;
-    margin: 32px auto;
+    /* max-width: 1180px; */
+    padding: 0 24px;
+    margin: 20px auto;
+}
+
+.profile-container .headerLogo {
+    width: 150px;
 }
 
 .profile-container header{
@@ -13,10 +17,6 @@
 .profile-container span{
     font-size: 20px;
     margin-left: 24px;
-}
-
-.profile-container header img{
-    height: 64px;
 }
 
 .profile-container header a{
