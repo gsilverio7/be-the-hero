@@ -56,3 +56,39 @@
     margin-top: 8px;
 
 }
+
+@media only screen and (max-width: 850px) {
+    .new-incident-container section {
+        position: relative;
+    }
+
+    .new-incident-container .content section h1{
+        margin: 32px 0;
+        text-align: center;
+    }
+
+    .new-incident-container .content section p{
+        text-align: center;
+    }
+
+    .new-incident-container .content img{
+        width: 150px;
+    }
+
+    .new-incident-container .content a{
+        position: absolute;
+        top: -20px;
+        right: 0;
+    }
+    
+    .new-incident-container form {
+        margin: 0 auto;
+    }
+
+    .new-incident-container .content {
+        padding: 40px 20px;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+  

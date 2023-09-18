@@ -49,11 +49,12 @@ export default function NewIncident() {
                 <p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
                 <Link className="back-link" to="/profile">
                 <FiArrowLeft size={16} color="#e02041" />
-                Voltar para home
+                Voltar
                 </Link>
 
             </section>
-            <form onSubmit={handleNewIncident}>
+
+            <form onSubmit={handleNewIncident}>               
 
                 <input 
                   placeholder="Título do caso"
@@ -67,11 +68,6 @@ export default function NewIncident() {
                   onChange={e => setDescription(e.target.value)}
                   required
                 />
-                {/* <input 
-                  placeholder="Valor em Reais"
-                  value={value}
-                  onChange={e => setValue(e.target.value)}
-                /> */}
 
                 <Cleave
                 placeholder="Valor em Reais"
