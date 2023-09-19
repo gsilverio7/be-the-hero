@@ -15,8 +15,8 @@ export default function Routing() {
                 <Route path="/logon" exact element={<Logon/>} />
                 <Route path="/register" element={<Register/>} />
                 <Route path="/profile" element={<Profile/>} />
-                <Route path="/incidents/new" element={<NewIncident/>} />           
-
+                <Route path="/incidents/new" element={<NewIncident/>} />  
+                <Route path="/incidents/:id" element={<NewIncident/>} /> 
                 <Route path="/" exact element={<Incidents/>} />
                 <Route path="/case/:id" exact element={<Detail/>} />   
             </Routes>   

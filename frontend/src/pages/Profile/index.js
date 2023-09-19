@@ -6,9 +6,11 @@ import { FiPower, FiTrash2, FiPlus, FiPenTool } from 'react-icons/fi';
 import api from "../../services/api";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import Hashids from 'hashids';
 
 export default function Profile() {
 
+  const hashids = new Hashids('holding out for a hero', 6);
   const MySwal = withReactContent(Swal.mixin({
     confirmButtonColor: '#e02041'
   }));
@@ -50,14 +52,19 @@ export default function Profile() {
       setIncidents(incidents.filter(incident => incident.id !== id));
       MySwal.fire('Caso apagado com sucesso!', '', 'success')
     } catch (err){
-      MySwal.fire('Erro ao apagar caso. Por favor, tente novamente.', '', 'error');
+      MySwal.fire('Erro ao apagar caso', 'Por favor, tente novamente.', 'error');
     }
+  }
+
+  async function handleUpdateIncident(id){
+    history('/incidents/' + hashids.encode(id));
   }
 
   function handleLogout() {
     localStorage.clear();
     history('/');
   }
+  
   return (
 
     <div className="profile-container">
@@ -92,6 +99,9 @@ export default function Profile() {
         
                    <button onClick={() => handleDeleteIncident(incident.id)} type="button"> {/* necessário arrow function ou deletará todos os incidentes */}
                      <FiTrash2 size={20} color="#a8a8b3"/>
+                   </button>
+                   <button onClick={() => handleUpdateIncident(incident.id)} type="button"> {/* necessário arrow function ou deletará todos os incidentes */}
+                     <FiPenTool size={20} color="#a8a8b3"/>
                    </button>
                  </div>
         ))}

@@ -38,6 +38,36 @@ module.exports = {
         return response.status(204).send(); //Pesquisar HTTP Status codes
     },
 
+    async edit (request, response) {
+        const { id } = request.params;
+        const decodedId = hashids.decode(id);
+        const ong_id = request.headers.authorization;
+        var {title, description, value} = request.body;
+
+        value = toString(value);
+        value = value.replace('.', '');
+        value = value.replace(',', '.');
+        value = parseFloat(value);
+
+        const incident = await connection('incidents')
+            .where('id', parseInt(decodedId))
+            .select('ong_id') //first retorna primeiro elemento do array, garantindo que retorne um número
+            .first();
+
+
+        if (incident.ong_id !== ong_id) {
+            return response.status(401).json({ error: 'Operação não permitida.'}) //Pesquisar HTTP Status codes
+        }
+
+        await connection('incidents').where('id', decodedId).update({
+            title,
+            description,
+            value
+        });
+
+        return response.status(204).send(); //Pesquisar HTTP Status codes
+    },
+
     async get (request, response) {
         const { id } = request.params;
         const decodedId = hashids.decode(id);

@@ -23,7 +23,6 @@ export default function Detail() {
 
     async function loadIncident() { 
         const response = await api.get('/incidents/' + id);  
-        //console.log(response);
         setIncident(response.data);
     }
   
@@ -36,7 +35,6 @@ export default function Detail() {
         <div className="container">
             <div className="header">
                 <div className="goBack btn" onClick={() => history('/') }>
-                    {/* <img className="headerLogo" src={logoImg} alt="Be The Hero"/> */}
                     <FiHome size={20} color='#fff' />     
                     &nbsp;
                     Página Inicial

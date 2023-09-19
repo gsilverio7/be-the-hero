@@ -30,13 +30,13 @@ export default function Register() {
         try {
         const response =  await api.post('ongs', data);
 
-        MySwal.fire(`Cadastro realizado com sucesso! Seu ID de acesso é: ${response.data.id}`, '', 'success')
+        MySwal.fire(`Cadastro realizado com sucesso!`, `Seu ID de acesso é: ${response.data.id}`, 'success')
             .then( () => {
                 history('/logon')
             });
 
         } catch (err) { 
-            MySwal.fire('Erro no cadastro. Por favor, tente novamente', '', 'error')
+            MySwal.fire('Erro no cadastro', 'Por favor, tente novamente', 'error')
         }
     };
 

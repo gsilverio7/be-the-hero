@@ -89,6 +89,10 @@
     transition: opacity 0.2s;
 }
 
+.profile-container .incidentList .incident button + button{
+    right: 48px;
+}
+
 .profile-container .incidentList .incident strong {
     display: block;
     margin-bottom: 16px;

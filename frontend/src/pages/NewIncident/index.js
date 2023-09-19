@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles.css';
 import logoImg from '../../assets/logo.svg';
 import { FiArrowLeft } from 'react-icons/fi';
-import { Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import api from "../../services/api";
 import Cleave from 'cleave.js/react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import formatMoney from '../../utils/formatMoney';
 
 export default function NewIncident() {
 
@@ -18,6 +19,21 @@ export default function NewIncident() {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const ongId = localStorage.getItem('ongId');
+
+  let { id } = useParams();
+
+  async function loadIncident() { 
+    if (id) {
+      const response = await api.get('/incidents/' + id);  
+      setTitle(response.data.title);
+      setDescription(response.data.description);
+      setValue(formatMoney(response.data.value, 'BRL', false));
+    }
+  }
+
+  useEffect(() => {
+      loadIncident();
+  }, []);
 
   async function handleNewIncident(e){
     e.preventDefault();
@@ -36,8 +52,29 @@ export default function NewIncident() {
           })
 
         } catch (err) { 
-            MySwal.fire('Erro no cadastro. Por favor, tente novamente', '', 'error')
+            MySwal.fire('Erro no cadastro', 'Por favor, tente novamente', 'error')
         }
+  }
+
+  async function handleEditIncident(e){
+    e.preventDefault();
+    const data = {title, description, value};
+
+    try {
+        await api.put('incidents/' + id, data, {
+           headers: {
+             Authorization: ongId,
+           }
+        });
+
+        MySwal.fire('Caso editado com sucesso!', '', 'success')
+          .then(() => {
+            history('/profile');
+          })
+
+    } catch (err) { 
+        MySwal.fire('Erro ao editar', 'Por favor, tente novamente', 'error')
+    }
   }
 
   return (
@@ -46,7 +83,7 @@ export default function NewIncident() {
         <div className="content">
             <section>
                 <img src={logoImg} alt="Be The Hero"/>
-                <h1>Cadastrar novo caso</h1>
+                <h1>{ id ? 'Alterar caso' : 'Cadastrar novo caso'}</h1>
                 <p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
                 <Link className="back-link" to="/profile">
                 <FiArrowLeft size={16} color="#e02041" />
@@ -55,7 +92,7 @@ export default function NewIncident() {
 
             </section>
 
-            <form onSubmit={handleNewIncident}>               
+            <form onSubmit={id ? handleEditIncident : handleNewIncident}>               
 
                 <input 
                   placeholder="Título do caso"
@@ -85,7 +122,7 @@ export default function NewIncident() {
                 />
 
 
-                <button className="button" type="submit">Cadastrar</button>
+                <button className="button" type="submit">{ id ? 'Alterar' : 'Cadastrar'}</button>
             </form>
         </div>
     </div>

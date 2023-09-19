@@ -33,6 +33,9 @@ routes.get('/ongs', cors(corsOptionsWeb), OngController.index); //Listagem de ON
 routes.options('/incidents', cors(corsOptionsWeb));
 routes.post('/incidents', cors(corsOptionsWeb), IncidentController.create); //Cadastrar novos Incidentes
 
+routes.options('/incidents/:id', cors(corsOptionsWeb));
+routes.put('/incidents/:id', cors(corsOptionsWeb), IncidentController.edit); //Alterar Incidentes
+
 routes.get('/incidents', cors(corsOptionsMobile), IncidentController.index); //Listagem de Incidentes
 
 routes.options('/incidents/:id', cors(corsOptionsWeb));

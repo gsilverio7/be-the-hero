@@ -28,7 +28,7 @@ export default function Logon() {
 
 
     } catch (err) {
-      MySwal('ID não encontrada ou falha no Login. Por favor, tente novamente.', '', 'error');
+      MySwal('ID não encontrada ou falha no Login', 'Por favor, tente novamente.', 'error');
     }
 
   }
