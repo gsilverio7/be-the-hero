@@ -1,5 +1,5 @@
-const express = require("express");
-const routes = require("./routes");
+const express = require('express');
+const routes = require('./routes');
 
 const app = express();
 
@@ -8,7 +8,6 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(3333);
-
 
 /*
 Rotas / Recursos
@@ -31,9 +30,9 @@ Tipos de Parâmetros
 **/
 
 /*
-*SQL: MySQL, SQLite, PostgreSQL, Oracle, Microsoft SQL Server
-*NoSQL: MongoDB, CouchDB, etc
-**/
+ *SQL: MySQL, SQLite, PostgreSQL, Oracle, Microsoft SQL Server
+ *NoSQL: MongoDB, CouchDB, etc
+ **/
 
 /*
 Driver: SELECT * FROM users

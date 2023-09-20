@@ -8,7 +8,9 @@
   "license": "ISC",
   "scripts": {
     "start": "node src/index.js",
-    "start:dev": "nodemon src/index.js"
+    "start:dev": "nodemon src/index.js",
+    "style": "prettier src/**/*.js",
+    "style:fix": "prettier --write src/**/*.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -16,6 +18,7 @@
     "express": "^4.18.2",
     "hashids": "^2.3.0",
     "knex": "^2.5.1",
+    "prettier": "^3.0.3",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
