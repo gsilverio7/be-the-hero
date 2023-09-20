@@ -11,23 +11,20 @@ import './global.css';
 // Componente no React é uma função que retorna HTML
 
 function App() {
+    //-------------
 
-  //-------------
+    // No react não se pode alterar variável diretamente. Deve ser feito como mostrado abaixo:
+    //const [counter, setCounter] = useState(0);
 
-  // No react não se pode alterar variável diretamente. Deve ser feito como mostrado abaixo:
-  //const [counter, setCounter] = useState(0); 
+    //function increment(){
 
-  //function increment(){
+    //  setCounter(counter +1);
+    //}
 
-  //  setCounter(counter +1);
-  //}
+    // NOTA: Também importar isso: {useState}
 
-  // NOTA: Também importar isso: {useState}
-
-  //-------------
-  return (
-    <Routing />
-  );
+    //-------------
+    return <Routing />;
 }
 
 export default App;
